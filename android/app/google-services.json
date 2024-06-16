@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "552599057959",
+    "project_id": "foodfacil-ecb8c",
+    "storage_bucket": "foodfacil-ecb8c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:552599057959:android:dfc812d7b5d60f316f4002",
+        "android_client_info": {
+          "package_name": "com.example.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBw2XsDp-WxC0SuTkivtZ3o9TQFREA8H38"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:552599057959:android:9dcda115fdf3fd496f4002",
+        "android_client_info": {
+          "package_name": "com.example.foodfacil"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBw2XsDp-WxC0SuTkivtZ3o9TQFREA8H38"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
