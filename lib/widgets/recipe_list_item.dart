@@ -10,7 +10,9 @@ class RecipeListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: Icon(Icons.fastfood, size: 50),
+      leading: recipe.imageUrl != null
+          ? Image.network(recipe.imageUrl!, width: 50, height: 50, fit: BoxFit.cover)
+          : Icon(Icons.fastfood, size: 50),
       title: Text(recipe.name),
       subtitle: Text('Tiempo: ${recipe.time}\nIngredientes: ${recipe.ingredients.join(', ')}'),
       onTap: onTap,

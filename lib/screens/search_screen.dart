@@ -27,6 +27,7 @@ class SearchScreen extends StatelessWidget {
               return RecipeListItem(
                 recipe: recipes[index],
                 onTap: () {
+                  
                 },
               );
             },
