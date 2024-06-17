@@ -5,7 +5,7 @@ class Recipe {
   final List<String> ingredients;
   final List<String> keywords;
   final String time;
-  final String? imageUrl;  // Imagen opcional
+  final String? imageUrl; 
 
   Recipe({
     required this.id,
