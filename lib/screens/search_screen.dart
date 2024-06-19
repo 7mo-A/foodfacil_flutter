@@ -10,7 +10,7 @@ class SearchScreen extends StatefulWidget {
 }
 
 class _SearchScreenState extends State<SearchScreen> {
-  String query = "";
+  final TextEditingController _searchController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -18,42 +18,34 @@ class _SearchScreenState extends State<SearchScreen> {
       appBar: AppBar(
         title: Text('Buscar Recetas'),
         bottom: PreferredSize(
-          preferredSize: Size.fromHeight(50.0),
+          preferredSize: Size.fromHeight(48.0),
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: TextField(
-              onChanged: (value) {
-                setState(() {
-                  query = value;
-                });
-              },
+              controller: _searchController,
               decoration: InputDecoration(
                 hintText: 'Buscar recetas...',
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10.0),
-                  borderSide: BorderSide.none,
-                ),
+                border: OutlineInputBorder(),
                 filled: true,
                 fillColor: Colors.white,
-                prefixIcon: Icon(Icons.search),
               ),
+              onChanged: (query) {
+                setState(() {});
+              },
             ),
           ),
         ),
       ),
-      body: StreamBuilder<QuerySnapshot>(
+      body: StreamBuilder(
         stream: FirebaseFirestore.instance.collection('recetas').snapshots(),
-        builder: (context, snapshot) {
-          if (snapshot.hasError) {
-            return Center(child: Text('Error: ${snapshot.error}'));
-          }
-          if (snapshot.connectionState == ConnectionState.waiting) {
+        builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+          if (!snapshot.hasData) {
             return Center(child: CircularProgressIndicator());
           }
 
           final recipes = snapshot.data!.docs
               .map((doc) => Recipe.fromMap(doc.data() as Map<String, dynamic>, doc.id))
-              .where((recipe) => recipe.name.toLowerCase().contains(query.toLowerCase()))
+              .where((recipe) => recipe.name.toLowerCase().contains(_searchController.text.toLowerCase()))
               .toList();
 
           return ListView.builder(
