@@ -21,6 +21,7 @@ class MyApp extends StatelessWidget {
       theme: appTheme,
       home: SplashScreen(),
       routes: AppRoutes.getRoutes(),
+      onGenerateRoute: AppRoutes.generateRoute,
     );
   }
 }
